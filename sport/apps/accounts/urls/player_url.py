@@ -4,7 +4,8 @@ from sport.apps.accounts.viewsets.player import (
 
 urlpatterns = [
     path('players/', ListPlayerViewSet.as_view({'get': 'list'})),
-    path('players/create/', CreatePlayerViewSet.as_view({'post': 'create'})),
+    path('players/create/',
+         CreatePlayerViewSet.as_view({'post': 'create'})),
     path('players/update/<int:pk>/',
          UpdatePlayerView.as_view({'put': 'update'})),
     path('players/delete/<int:pk>/',
