@@ -25,4 +25,5 @@ urlpatterns = [
     path('', include('sport.apps.accounts.urls.player_url')),
     path('', include('sport.apps.accounts.urls.generic_url')),
     path('', include('sport.apps.accounts.urls.trainer_url')),
+    path('', include('sport.apps.team.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
