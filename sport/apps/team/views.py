@@ -27,11 +27,6 @@ class DeleteTeamViewSet(mixins.DestroyModelMixin, viewsets.GenericViewSet):
     queryset = Team.objects.all()
     serializer_class = TeamSerializer
 
-    def get_object(self):
-        obj = self.get_queryset().first()
-        self.check_object_permissions(self.request, obj)
-        return obj
-
 
 class UpdateTeamViewSet(mixins.UpdateModelMixin, viewsets.GenericViewSet):
 
