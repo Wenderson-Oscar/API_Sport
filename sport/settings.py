@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'sport.apps.accounts',
     'sport.apps.team',
+    'drf_spectacular',
 ]
 
 MIDDLEWARE = [
@@ -93,6 +94,7 @@ DATABASES = {
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
 
 REST_FRAMEWORK = {
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework.authentication.BasicAuthentication',
         'rest_framework.authentication.SessionAuthentication',

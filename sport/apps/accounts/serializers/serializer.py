@@ -23,11 +23,18 @@ class UserSerializer(serializers.ModelSerializer):
         return user
 
 
+class SpecialtySerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Specialty
+        fields = ['name']
+
+
 class UserUpdateSerializer(serializers.ModelSerializer):
 
     user = UserSerializer()
-    specialty = serializers.ChoiceField(
-        choices=Specialty.objects.all(), write_only=True, required=False)
+    specialty = serializers.PrimaryKeyRelatedField(
+        queryset=Specialty.objects.all(), required=False, write_only=True)
     kg = serializers.FloatField(write_only=True, required=False)
     height = serializers.FloatField(write_only=True, required=False)
 
@@ -46,13 +53,6 @@ class UserUpdateSerializer(serializers.ModelSerializer):
             setattr(instance, field, value)
         instance.save()
         return instance
-
-
-class SpecialtySerializer(serializers.ModelSerializer):
-
-    class Meta:
-        model = Specialty
-        fields = ['name']
 
 
 class PlayerSerializer(serializers.ModelSerializer):
